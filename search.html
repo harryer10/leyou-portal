@@ -180,11 +180,11 @@
                     <li class="yui3-u-1-5" v-for="goods in goodsList" :key="goods.id">
                         <div class="list-wrap">
                             <div class="p-img">
-                                <a :href="'/item/' + goods.id + '.html'" target="_blank"><img :src="goods.selectedSku.images" height="200"/></a>
+                                <a :href="'/item/' + goods.id + '.html'" target="_blank"><img :src="goods.selectedSku.image" height="200"/></a>
                                 <!--多sku图片列表-->
                                 <ul class="skus">
                                     <li :class="{selected: sku.id == goods.selectedSku.id}" v-for="sku in goods.skus" :key="sku.id" @mouseEnter="goods.selectedSku=sku">
-                                        <img :src="sku.images"></li>
+                                        <img :src="sku.image"></li>
                                 </ul>
                             </div>
                             <div class="clearfix"></div>
@@ -437,7 +437,7 @@
                 }
                 if (k !== 'brandId') return v;
 
-                for (let i = 0; i < this.filters.length; i++){
+                for (let i in this.filters){
                     if (this.filters[i].k === 'brandId')
                         return this.filters[i].options[0].name;
                 }
